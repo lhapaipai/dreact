@@ -1,11 +1,10 @@
-import DReact from "../dreact";
-import Dreact from "../dreact";
+import DReact from "dreact";
 
 export default function Counter() {
-  const [count, setCount] = Dreact.useState(1);
+  const [count, setCount] = DReact.useState(1);
 
   function handleClick() {
-    setCount((c) => c + 1);
+    setCount((c: number) => c + 1);
   }
 
   return <button onClick={handleClick}>{`Counter : ${count}`}</button>;

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  dreact:
+    specifier: link:lib/dreact
+    version: link:lib/dreact
   react:
     specifier: ^18.2.0
     version: 18.2.0

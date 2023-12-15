@@ -1,6 +1,6 @@
+import DReact from "dreact";
 import Counter from "./components/Counter";
 import Header from "./components/Header";
-import DReact from "./dreact";
 
 function rerender(value: string) {
   console.log("rerender");
@@ -16,18 +16,6 @@ function rerender(value: string) {
       <Counter />
     </div>
   );
-
-  // const element = createElement(
-  //   "div",
-  //   {},
-  //   createElement("input", {
-  //     onInput: handleInput,
-  //     value: value,
-  //   }),
-  //   // createElement("h2", {}, `Hello ${value}`),
-  //   createElement(Header, { name: value }),
-  //   createElement(Counter, {}),
-  // );
 
   DReact.render(element, container);
 }

@@ -1,10 +1,11 @@
-import { isEvent, isGone, isNew, isProperty } from "../dreact/util";
+import { isEvent, isGone, isNew, isProperty } from "./util";
 
 export function createDom(fiber: Fiber) {
   const dom =
     fiber.type === "TEXT_ELEMENT"
       ? document.createTextNode("")
-      : document.createElement(fiber.type);
+      : // @ts-ignore
+        document.createElement(fiber.type);
 
   updateDom(dom, {}, fiber.props);
 
@@ -35,9 +36,6 @@ export function updateDom(
       dom[name] = "";
     });
 
-  if (nextProps === undefined) {
-    debugger;
-  }
   Object.keys(nextProps)
     .filter(isProperty)
     .filter(isNew(prevProps, nextProps))

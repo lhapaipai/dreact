@@ -1,4 +1,4 @@
-import DReact from "../dreact";
+import DReact from "dreact";
 
 interface HeaderProps {
   name: string;

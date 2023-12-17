@@ -32,6 +32,25 @@ interface Fiber {
 
   effectTag?: "UPDATE" | "PLACEMENT" | "DELETION";
 }
+
+// interface OriginalFiber {
+//   tag: WorkTag;
+//   key: null | string;
+//   type: any; // la classe ou fonction associée à la fibre
+
+//   child: OriginalFiber | null;
+//   sibling: OriginalFiber | null;
+//   index: number;
+
+//   pendingProps: any;
+//   memoizedProps: any;
+
+//   updateQueue: (State | StateUpdaters)[];
+//   memoizedState: any;
+
+//   dependencies: Dependencies | null;
+// }
+
 interface DidactElement {
   type: string | FunctionComponent;
   props: Props;

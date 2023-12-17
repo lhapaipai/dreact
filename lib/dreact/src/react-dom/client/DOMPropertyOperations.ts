@@ -1,17 +1,8 @@
 import { isEvent, isGone, isNew, isProperty } from "./util";
 
-export function createDom(fiber: Fiber) {
-  const dom =
-    fiber.type === "TEXT_ELEMENT"
-      ? document.createTextNode("")
-      : // @ts-ignore
-        document.createElement(fiber.type);
-
-  updateDom(dom, {}, fiber.props);
-
-  return dom;
-}
-
+/**
+ * Met à jour les attributs du Noeud et ses écouteurs d'événements.
+ */
 export function updateDom(
   dom: Dom,
   prevProps: Props = {},

@@ -1,7 +1,7 @@
 import { createElement, createTextElement } from "./factory";
 import { globals } from "./globals";
-import useState from "./hooks/useState";
-import { workLoop } from "./worker";
+import { workLoop } from "./react-reconciler/ReactFiberWorkLoop.new";
+import { useState } from "./react-reconciler/ReactFiberHooks.new";
 
 function render(element: DidactElement, container: HTMLElement) {
   globals.wipRoot = {

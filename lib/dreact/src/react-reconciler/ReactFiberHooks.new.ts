@@ -1,6 +1,6 @@
-import { globals } from "../globals";
+import { globals } from "~/globals";
 
-export default function useState(initialValue: any) {
+export function useState(initialValue: any) {
   if (!globals.wipFiber) {
     throw new Error("Can't call hook outside fiber");
   }
@@ -40,6 +40,7 @@ export default function useState(initialValue: any) {
       sibling: null,
       hooks: [],
     };
+
     globals.nextUnitOfWork = globals.wipRoot;
     globals.deletions = [];
   };

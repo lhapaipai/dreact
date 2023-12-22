@@ -1,5 +1,5 @@
 import { globals } from "~/globals";
-import { commitWork } from "./ReactFiberCompleteWork.new";
+import { completeWork } from "./ReactFiberCompleteWork.new";
 import {
   updateFunctionComponent,
   updateHostComponent,
@@ -21,9 +21,9 @@ export function workLoop(deadline: IdleDeadline) {
 }
 
 export function commitRoot() {
-  globals.deletions.forEach(commitWork);
+  globals.deletions.forEach(completeWork);
   if (globals.wipRoot?.child) {
-    commitWork(globals.wipRoot.child);
+    completeWork(globals.wipRoot.child);
   }
   globals.currentRoot = globals.wipRoot;
   globals.wipRoot = null;

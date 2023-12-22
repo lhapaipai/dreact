@@ -37,11 +37,15 @@ export function updateHostComponent(fiber: Fiber) {
  * Crée les fibres de ses enfants, se base de l'historique pour choisir s'il
  * s'agit d'une nouvelle fibre ou d'une mise à jour d'une ancienne fibre.
  */
-export function reconcileChildren(wipFiber: Fiber, elements: DidactElement[]) {
+export function reconcileChildren(wipFiber: Fiber, elements: DreactElement[]) {
   let index = 0;
   let oldChildFiber: Fiber | null =
     wipFiber.alternate && wipFiber.alternate.child;
   let prevSibling: Fiber | null = null;
+
+  if (!elements) {
+    return;
+  }
 
   while (index < elements.length || oldChildFiber !== null) {
     const element = elements[index];

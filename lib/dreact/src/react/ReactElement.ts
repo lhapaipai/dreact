@@ -1,8 +1,8 @@
 export function createElement(
   type: string | FunctionComponent,
   props: Props = {},
-  ...children: (DidactElement | string)[]
-): DidactElement {
+  ...children: (DreactElement | string)[]
+): DreactElement {
   return {
     type,
     props: {

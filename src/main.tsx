@@ -1,18 +1,25 @@
 import DReact from "dreact";
 import Counter from "./components/Counter";
 import Header from "./components/Header";
-import { Hello } from "./components/Hello";
+import "./index.css";
+import reactLogo from "./assets/react.svg";
 
 function rerender(value: string) {
-  console.log("rerender");
+  console.log("render");
 
   const handleInput = (e: Event) => {
-    rerender(e.target.value);
+    rerender((e.target! as HTMLInputElement).value);
   };
 
   const element = (
     <div>
-      <input onInput={handleInput} value={value} />
+      <div>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+
+      <input className="input-text" onInput={handleInput} value={value} />
       <Header name={value} />
       <Counter />
     </div>
@@ -23,5 +30,3 @@ function rerender(value: string) {
 
 const container = document.getElementById("root")!;
 rerender("Hugues");
-
-console.log(<Hello />);

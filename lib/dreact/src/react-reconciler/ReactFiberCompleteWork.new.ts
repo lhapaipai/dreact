@@ -10,7 +10,7 @@ import { commitDeletion } from "./ReactFiberCommitWork.new";
  * Lance un commit sur son 1er fils
  * Lance un commit sur son prochain frère
  */
-export function commitWork(fiber: Fiber) {
+export function completeWork(fiber: Fiber) {
   if (!fiber) {
     return;
   }
@@ -32,6 +32,6 @@ export function commitWork(fiber: Fiber) {
     }
   }
 
-  fiber.child && commitWork(fiber.child);
-  fiber.sibling && commitWork(fiber.sibling);
+  fiber.child && completeWork(fiber.child);
+  fiber.sibling && completeWork(fiber.sibling);
 }

@@ -13,7 +13,7 @@ type Props = {
 
 type Dom = Text | HTMLElement;
 
-type FunctionComponent = (props: Props) => DidactElement;
+type FunctionComponent = (props: Props) => DreactElement;
 
 interface Fiber {
   type: string | FunctionComponent;
@@ -51,7 +51,7 @@ interface Fiber {
 //   dependencies: Dependencies | null;
 // }
 
-interface DidactElement {
+interface DreactElement {
   type: string | FunctionComponent;
   props: Props;
 }

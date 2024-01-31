@@ -1,32 +1,51 @@
-import DReact from "dreact";
-import Counter from "./components/Counter";
-import Header from "./components/Header";
-import "./index.css";
-import reactLogo from "./assets/react.svg";
+import { JSXElementConstructor } from "react";
 
-function rerender(value: string) {
-  console.log("render");
-
-  const handleInput = (e: Event) => {
-    rerender((e.target! as HTMLInputElement).value);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function createElement(
+  type: string | FunctionComponent,
+  props: Props,
+  ...children: (DreactElement | string)[]
+): DreactElement {
+  return {
+    type,
+    props: {
+      ...props,
+      children:
+        children?.map((child) =>
+          typeof child === "string" ? createTextElement(child) : child,
+        ) ?? [],
+    },
   };
-
-  const element = (
-    <div>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-
-      <input className="input-text" onInput={handleInput} value={value} />
-      <Header name={value} />
-      <Counter />
-    </div>
-  );
-
-  DReact.render(element, container);
 }
 
+function createTextElement(content: string) {
+  return {
+    type: "TEXT_ELEMENT",
+    props: {
+      nodeValue: content,
+      children: [],
+    },
+  };
+}
+
+function render(element: DreactElement, container: HTMLElement) {
+  const dom =
+    element.type === "TEXT_ELEMENT"
+      ? document.createTextNode("")
+      : document.createElement(element.type);
+
+  const isProperty = (key: string) => key !== "children";
+  Object.keys(element.props)
+    .filter(isProperty)
+    .forEach((name) => {
+      dom[name] = element.props[name];
+    });
+
+  element.props.children.forEach((child) => render(child, dom));
+  container.appendChild(dom);
+}
+
+const element = <h1 title="foo">Hello</h1>;
 const container = document.getElementById("root")!;
-rerender("Hugues");
+
+render(element, container);

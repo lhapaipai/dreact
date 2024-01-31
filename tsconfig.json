@@ -16,8 +16,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "jsxFactory": "DReact.createElement",
-    "jsxFragmentFactory": "DReact.Fragment",
+    "jsxFactory": "createElement",
+    "jsxFragmentFactory": "createFragment",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
